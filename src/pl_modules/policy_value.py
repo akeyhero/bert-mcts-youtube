@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
-from transformers import AdamW
+from torch.optim import AdamW
 
 from src.data.policy_value import PolicyValueDataset
 from src.model.bert import BertPolicyValue

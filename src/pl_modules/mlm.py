@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 import pytorch_lightning as pl
 from torch.utils.data import DataLoader
-from transformers import AdamW
+from torch.optim import AdamW
 
 from src.data.mlm import MLMDataset
 from src.model.bert import BertMLM
