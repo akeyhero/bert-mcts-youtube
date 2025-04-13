@@ -17,7 +17,7 @@ def main(args):
     ckpt_path = Path(args.ckpt_path)
     ckpt_dir = ckpt_path.parent
 
-    ckpt = torch.load(ckpt_path)
+    ckpt = torch.load(ckpt_path, weights_only=False)
     state_dict = ckpt['state_dict']
     state_dict = {'.'.join(k.split('.')[2:]): v for k, v in state_dict.items()}
 
