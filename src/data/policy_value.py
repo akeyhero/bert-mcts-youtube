@@ -15,5 +15,5 @@ class PolicyValueDataset(Dataset):
         ret_dict = {'input_ids': torch.tensor(dt['seq'], dtype=torch.long),
                     'labels': torch.tensor(dt['label'], dtype=torch.long),
                     'values': torch.tensor(dt['value'], dtype=torch.float),
-                    'result': torch.tensor(dt['result'], dtype=torch.long)}
+                    'result': torch.tensor(dt['result'].astype(int), dtype=torch.long)}
         return ret_dict
