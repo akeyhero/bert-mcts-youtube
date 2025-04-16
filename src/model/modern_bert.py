@@ -11,9 +11,9 @@ config = {
     'sep_token_id': len(pieces_list) + 3,  # SEP
     'pad_token_id': len(pieces_list) + 3,  # SEP
     'hidden_size': 768,
-    'num_hidden_layers': 12,
+    'num_hidden_layers': 22,
     'num_attention_heads': 12,
-    'intermediate_size': 3072,  # hidden_size * 4が目安
+    'intermediate_size': 1152,  # hidden_size * 4が目安
     'global_attn_every_n_layers': 1,
     # 'hidden_act': 'gelu',
     'mlp_dropout': 0.1,
