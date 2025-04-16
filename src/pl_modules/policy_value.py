@@ -7,13 +7,17 @@ from torch.optim import AdamW
 
 from src.data.policy_value import PolicyValueDataset
 from src.model.bert import BertPolicyValue
+from src.model.modern_bert import ModernBertPolicyValue
 
 
 class PolicyValueModule(pl.LightningModule):
     def __init__(self, hparams):
         super().__init__()
         self.hparams = hparams
-        self.model = BertPolicyValue(hparams['model_dir'])
+        if hparams.get('model_arch') == 'modernbert':
+            self.model = ModernBertPolicyValue(hparams['model_dir'])
+        else:
+            self.model = BertPolicyValue(hparams['model_dir'])
 
     def forward(self, input_ids, labels=None):
         output = self.model(input_ids, labels)

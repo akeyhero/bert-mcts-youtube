@@ -7,6 +7,7 @@ from torch.optim import AdamW
 
 from src.data.mlm import MLMDataset
 from src.model.bert import BertMLM
+from src.model.modern_bert import ModernBertMLM
 
 
 class MLMModule(pl.LightningModule):
@@ -14,7 +15,10 @@ class MLMModule(pl.LightningModule):
     def __init__(self, hparams):
         super().__init__()
         self.hparams = hparams
-        self.model = BertMLM(hparams['model_dir'])
+        if hparams.get('model_arch') == 'modernbert':
+            self.model = ModernBertMLM(hparams['model_dir'])
+        else:
+            self.model = BertMLM(hparams['model_dir'])
 
     def forward(self, batch):
         input_ids = batch['input_ids']
